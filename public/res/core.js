@@ -293,10 +293,14 @@ define([
 
     if(window.viewerMode === true) {
       document.body.innerHTML = bodyViewerHTML;
+      if(typeof window.nwDispatcher !== 'undefined') {
+        document.title = "StackEdit Plus";
+      }
     }
     else {
       document.body.innerHTML = bodyEditorHTML;
       if(typeof window.nwDispatcher !== 'undefined') {
+        document.title = "StackEdit Plus";
         var a = $('.list-group')[0];
         var b = a.childNodes[1];
         b.setAttribute('href', 'viewer.html');
