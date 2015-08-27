@@ -6,3 +6,7 @@ Thumbs.db
 .DS_Store
 stackedit.iml
 public/res/bower-libs
+public/res-min
+nw
+cache
+build
