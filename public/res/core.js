@@ -423,10 +423,16 @@ define([
     });
     $(".action-insert-image").click(function(e) {
       var value = utils.getInputTextValue($("#input-insert-image"), e);
+      var isScalable = $("#isScalableImg")[0].checked;
       if(value !== undefined) {
-        core.insertLinkCallback(value);
+        core.insertLinkCallback(value, isScalable);
         core.insertLinkCallback = undefined;
       }
+    });
+    // File picker to choose local image
+    $("#imgToInsert").change(function(e) {
+      // TODO: currently, only on nw.js have this feature
+      $("#input-insert-image")[0].value = $(this).val();
     });
 
     // Hide events on "insert link" and "insert image" dialogs

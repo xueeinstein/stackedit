@@ -161,7 +161,9 @@ gulp.task('copy-mathjax', function() {
   return gulp.src([
               './public/res/bower-libs/MathJax/**/*',
               '!./public/res/bower-libs/MathJax/fonts/**/*',
-              './public/res/bower-libs/MathJax/fonts/HTML-CSS/TeX/*',
+              '!./public/res/bower-libs/MathJax/unpacked/**/*',
+              '!./public/res/bower-libs/MathJax/docs/**/*',
+              '!./public/res/bower-libs/MathJax/test/**/*'
             ])
             .pipe(gulp.dest('./nw/res/bower-libs/MathJax'));
 });

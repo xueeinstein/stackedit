@@ -1776,7 +1776,7 @@
             var that = this;
             // The function to be executed when you enter a link and press OK or Cancel.
             // Marks up the link and adds the ref.
-            var linkEnteredCallback = function (link) {
+            var linkEnteredCallback = function (link, isScalableImg) {
 
                 background.parentNode.removeChild(background);
 
@@ -1806,9 +1806,15 @@
 
                     var num = that.addLinkDef(chunk, linkDef);
                     */
-                    chunk.startTag = isImage ? "![" : "[";
-                    //chunk.endTag = "][" + num + "]";
-                    chunk.endTag = "](" + properlyEncoded(link) + ")";
+                    if (typeof(isScalableImg) !== "undefined" && isScalableImg) {
+                        // use chunk format '<img src= ...., width=..>' for scalable img
+                        chunk.startTag = '<img src="'+properlyEncoded(link)+'" alt="';
+                        chunk.endTag = '" width="100%" >';
+                    } else {
+                        chunk.startTag = isImage ? "![" : "[";
+                        //chunk.endTag = "][" + num + "]";
+                        chunk.endTag = "](" + properlyEncoded(link) + ")";
+                    }
 
                     if (!chunk.selection) {
                         if (isImage) {
